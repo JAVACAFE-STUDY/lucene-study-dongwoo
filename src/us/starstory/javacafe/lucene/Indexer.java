@@ -42,9 +42,11 @@ public class Indexer {
     }
 
     private Document getDocument(File file) throws IOException{
+        FileFilter fileFilter = new TextFileFilter();
         Document document = new Document();
-        document.add(new StringField("title",file.toString(), Field.Store.YES));
-        document.add(new StringField("content", String.valueOf(new FileReader(file)), Field.Store.YES));
+        System.out.println(file.getName());
+        document.add(new StringField("title",file.getName(), Field.Store.YES));
+        document.add(new StringField("content", String.valueOf(fileFilter.getFileData(file,true)), Field.Store.YES));
         Long currentTime = System.currentTimeMillis();
         document.add(new StringField("modified",String.valueOf(currentTime), Field.Store.YES));
         return document;

@@ -18,7 +18,7 @@ public class SearcherTest {
     @Test
     public void search() throws IOException,ParseException {
 
-        String searchQuery = new String("content:Baby");
+        String searchQuery = new String("네이버");
 
         searcher = new Searcher(indexDir);
         long startTime = System.currentTimeMillis();
