@@ -13,18 +13,19 @@ public class TextFileFilter implements FileFilter{
         return file.getName().toLowerCase().endsWith(".txt");
     }
 
-    public List<String> getFileData(File file, boolean isReadLine){
+    public StringBuilder getFileData(File file, boolean isReadLine){
         BufferedReader bufferedReader= null;
         String cStr = null;
         String str =null;
-        List<String> strReturnData = new ArrayList<String>();
+        StringBuilder strReturnData = new StringBuilder();
         try{
             bufferedReader = new BufferedReader(new FileReader(file));
             while(isReadLine == true){
                 str = bufferedReader.readLine();
-                strReturnData.add(str);
+                strReturnData.append(str);
+                System.out.println(str);
                 if(str == null){
-                    continue;
+                    break;
                 }
             }
 
@@ -33,6 +34,7 @@ public class TextFileFilter implements FileFilter{
                     str = bufferedReader.readLine();
                     if(str == null) break;
                     cStr = str;
+
                 }
             }
 

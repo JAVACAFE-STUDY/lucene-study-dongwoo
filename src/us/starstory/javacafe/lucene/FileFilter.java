@@ -8,5 +8,5 @@ import java.util.List;
  */
 public interface FileFilter {
     boolean acceptFile(File file);
-    List<String> getFileData(File file, boolean isReadLine);
+    StringBuilder getFileData(File file, boolean isReadLine);
 }

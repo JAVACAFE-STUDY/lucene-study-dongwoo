@@ -17,12 +17,10 @@ public class SearcherTest {
 
     @Test
     public void search() throws IOException,ParseException {
-
-        String searchQuery = new String("네이버");
-
+        String keyword = "네이버";
         searcher = new Searcher(indexDir);
         long startTime = System.currentTimeMillis();
-        TopDocs hits = searcher.search("content", searchQuery);
+        TopDocs hits = searcher.search("content", keyword);
         long endTime = System.currentTimeMillis();
 
         System.out.println(hits.totalHits +  " documents found. Time :" + (endTime - startTime));

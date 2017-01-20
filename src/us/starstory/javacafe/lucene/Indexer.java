@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Created by nobaksan on 2017. 1. 19..
@@ -44,9 +45,8 @@ public class Indexer {
     private Document getDocument(File file) throws IOException{
         FileFilter fileFilter = new TextFileFilter();
         Document document = new Document();
-        System.out.println(file.getName());
         document.add(new StringField("title",file.getName(), Field.Store.YES));
-        document.add(new StringField("content", String.valueOf(fileFilter.getFileData(file,true)), Field.Store.YES));
+        document.add(new StringField("content", fileFilter.getFileData(file,true).toString(), Field.Store.YES));
         Long currentTime = System.currentTimeMillis();
         document.add(new StringField("modified",String.valueOf(currentTime), Field.Store.YES));
         return document;
